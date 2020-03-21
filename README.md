@@ -16,4 +16,3 @@ URL shortening service.
 |My wechat (Please mark：form Github)|![p](https://raw.githubusercontent.com/googege/GOFamily/master/me.jpeg)|
 |My bilibili|[b](https://space.bilibili.com/23170151)|
 |MyYouTube|[YouTube](https://www.youtube.com/channel/UCM_-pFgD_HZDGD0yxfzguRQ?view_as=subscriber)|
-|My tiktok|googege|
