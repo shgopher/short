@@ -5,7 +5,7 @@ URL shortening service.
 ## About
 ## Features
 ## Quick Start
-> [Detailed introduction](./description.md)
+> [Detailed introduction](https://github.com/googege/GOFamily/blob/master/%E9%A1%B9%E7%9B%AE/%E9%AB%98%E6%80%A7%E8%83%BD%E7%9F%AD%E9%93%BE%E6%8E%A5%E6%9C%8D%E5%8A%A1.md)
 
 ## HERE
 |items|description|

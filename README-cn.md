@@ -4,7 +4,7 @@
 ## 介绍
 ## 特征
 ## 快速入门
-> [详细介绍](./description.md)
+> [详细介绍](https://github.com/googege/GOFamily/blob/master/%E9%A1%B9%E7%9B%AE/%E9%AB%98%E6%80%A7%E8%83%BD%E7%9F%AD%E9%93%BE%E6%8E%A5%E6%9C%8D%E5%8A%A1.md)
 
 ## HERE
 |项目|介绍|
@@ -15,4 +15,4 @@
 |我的微信（请标注：来自Github）|![p](https://raw.githubusercontent.com/googege/GOFamily/master/me.jpeg)|
 |我的b站|[b站](https://space.bilibili.com/23170151)|
 |我的YouTube|[YouTube](https://www.youtube.com/channel/UCM_-pFgD_HZDGD0yxfzguRQ?view_as=subscriber)|
-|我的抖音|googege| 
+|我的抖音|googege|
