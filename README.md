@@ -1,4 +1,4 @@
-# short-t
+# short
 > [中文](./README-cn.md)
 
 URL shortening service.
