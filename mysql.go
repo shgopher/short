@@ -7,21 +7,7 @@ import (
 	"sync"
 )
 
-var (
-	dataSourName string
-	db           *sql.DB
-)
 
-func init() {
-	once := new(sync.Once)
-	once.Do(func() {
-		var err error
-		db, err = sql.Open("mysql", dataSourName)
-		if err != nil {
-			glog.Error(err)
-		}
-	})
-}
 
 type MySqlDB struct {
 	db *sql.DB
