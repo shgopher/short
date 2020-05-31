@@ -47,7 +47,7 @@ func main() {
 		fmt.Println("short: ", shortURL)
 	}
 	//
-	if err = s.SetQR(path, 256, "/Users/googege/Desktop/test.png"); err != nil {
+	if err = s.SetQR(path, 256, "test.png"); err != nil {
 		glog.Error(err)
 	}
 }

@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"github.com/golang/glog"
 	"github.com/googege/short"
+	"os"
 )
 
 var (
@@ -38,7 +39,11 @@ func main() {
 		fmt.Println("short: ", shortURL)
 	}
 	//
-	if err = s.SetQR(path, 256, "/Users/googege/Desktop/test.png"); err != nil {
+	file, err := os.Getwd()
+	if err != nil {
+		glog.Error(err)
+	}
+	if err = s.SetQR(path, 256, file+"/text.png"); err != nil {
 		glog.Error(err)
 	}
 }
