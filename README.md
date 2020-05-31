@@ -1,9 +1,11 @@
 # short
-> [中文](./README-cn.md)
+
+Use murmur hash function.
 
 URL shortening service.
 
 ## Usage
+[example](./example/example.go)
 ```go
 package main
 
