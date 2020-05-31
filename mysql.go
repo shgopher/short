@@ -4,10 +4,10 @@ import (
 	"database/sql"
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/golang/glog"
+	"math/rand"
+	"strconv"
 	"sync"
 )
-
-
 
 type MySqlDB struct {
 	db *sql.DB
@@ -38,6 +38,7 @@ func NewMySqlDB(dataSourName string) *MySqlDB {
 func (m *MySqlDB) Add(v *Node) (shortURL string, err error) {
 	// short-url long-URL
 	st, err := m.db.Prepare("INSERT INTO short (short_url,long_url) VALUES (?,?)")
+	defer st.Close()
 	if err != nil {
 		return "", err
 	}
@@ -46,12 +47,11 @@ func (m *MySqlDB) Add(v *Node) (shortURL string, err error) {
 	if err != nil {
 		return "", err
 	}
-	// close the connection
-	st.Close()
 	return v.ShortValue, nil
 }
 func (m *MySqlDB) Delete(shortURL string) {
 	st, err := m.db.Prepare("DELETE FROM short WHEN short_url=?")
+	defer st.Close()
 	if err != nil {
 		glog.Error(err)
 	}
@@ -59,11 +59,11 @@ func (m *MySqlDB) Delete(shortURL string) {
 	if err != nil {
 		glog.Error(err)
 	}
-	st.Close()
 }
 
 func (m *MySqlDB) Change(vi *Node, r string) error {
 	st, err := m.db.Prepare("UPDATE short SET short_url=?WHERE long_url=?")
+	defer st.Close()
 	if err != nil {
 		return err
 	}
@@ -71,14 +71,25 @@ func (m *MySqlDB) Change(vi *Node, r string) error {
 	if err != nil {
 		return err
 	}
-	st.Close()
 	return nil
 }
 
 func (m *MySqlDB) Find(shortURL string) (string, error) {
 	long := ""
-	row:= m.db.QueryRow("SELECT long_url FROM short WHERE short_url=?",shortURL)
-	row.Scan(&long)
+	rows,err := m.db.Query("SELECT long_url FROM short WHERE short_url=?", shortURL)
+	if err != nil {
+		return "",err
+	}
+	t := 0
+	for rows.Next() {
+		t++
+		rows.Scan(&long)
+		if t >1 {
+			m.Change(&Node{
+				LongValue: long,
+				ShortValue: shortURL,
+			},shortURL+strconv.FormatInt(int64(rand.Int()),10))
+		}
+	}
 	return long, nil
 }
-
