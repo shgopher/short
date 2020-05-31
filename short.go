@@ -22,10 +22,10 @@ func NewShort() *Node {
 // short the long url to a small one in hash method.
 func (n *Node) ShortAdd(longURL string, db DB) (string, error) {
 	n.lock.Lock()
+	defer n.lock.Unlock()
 	murmurStringValue := hash.MurmurHash(longURL)
 	n.LongValue = longURL
 	n.ShortValue = murmurStringValue
-	n.lock.Unlock()
 	return db.Add(n)
 }
 

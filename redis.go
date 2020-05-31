@@ -31,7 +31,7 @@ func NewRedisDB(options *redis.Options) *RedisDB {
 }
 
 func (rd *RedisDB) Add(v *Node) (shortURL string, err error) {
-	if _,err := rd.client.Get(rd.ctx,shortURL).Result();err !=redis.Nil {
+	if _,err := rd.client.Get(rd.ctx,v.ShortValue).Result();err !=redis.Nil {
 		v.ShortValue = v.ShortValue+strconv.FormatInt(int64(rand.Int()),10)
 	}
 	//
