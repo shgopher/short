@@ -13,8 +13,8 @@ type MySqlDB struct {
 	db *sql.DB
 }
 type MySqlDBValue struct {
-	ShortURL string `json:"short_url"`
-	LongURL  string `json:"long_url"`
+	ShortURL string `mysql:"short_url"`
+	LongURL  string `mysql:"short_url"`
 }
 
 func NewMySqlDB(dataSourName string) *MySqlDB {
