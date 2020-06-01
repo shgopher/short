@@ -25,7 +25,8 @@ func main() {
 	//
 	longURL, err = s.ShortFind(path+shortURL, db)
 	// if http
-	//http.Redirect(nil,nil,longURL,302)
+	//http.Redirect(nil,nil,longURL,302
+	//)
 	if err != nil {
 		glog.Error(err)
 	} else {
