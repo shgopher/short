@@ -77,6 +77,7 @@ func (m *MySqlDB) Change(vi *Node, r string) error {
 func (m *MySqlDB) Find(shortURL string) (string, error) {
 	long := ""
 	rows,err := m.db.Query("SELECT long_url FROM short WHERE short_url=?", shortURL)
+	defer rows.Close()
 	if err != nil {
 		return "",err
 	}
