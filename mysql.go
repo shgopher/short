@@ -76,20 +76,20 @@ func (m *MySqlDB) Change(vi *Node, r string) error {
 
 func (m *MySqlDB) Find(shortURL string) (string, error) {
 	long := ""
-	rows,err := m.db.Query("SELECT long_url FROM short WHERE short_url=?", shortURL)
+	rows, err := m.db.Query("SELECT long_url FROM short WHERE short_url=?", shortURL)
 	defer rows.Close()
 	if err != nil {
-		return "",err
+		return "", err
 	}
 	t := 0
 	for rows.Next() {
 		t++
 		rows.Scan(&long)
-		if t >1 {
+		if t > 1 {
 			m.Change(&Node{
-				LongValue: long,
+				LongValue:  long,
 				ShortValue: shortURL,
-			},shortURL+strconv.FormatInt(int64(rand.Int()),10))
+			}, shortURL+strconv.FormatInt(int64(rand.Int()), 10))
 		}
 	}
 	return long, nil

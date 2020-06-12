@@ -33,8 +33,8 @@ func EncodeBase62(v int) string {
 func DecodeBase62(v string) int {
 	strings.TrimSpace(v)
 	num := 0
-	for k,vi := range v {
-		num += ma[string(vi)] *int(math.Pow(LENGTH,float64(k)))
+	for k, vi := range v {
+		num += ma[string(vi)] * int(math.Pow(LENGTH, float64(k)))
 	}
 	return num
 }

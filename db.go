@@ -5,10 +5,10 @@ import (
 )
 
 type DB interface {
-	Add(v *Node) (shortURL string,err error)               // add v to db
-	Delete(shortURL string)                  // delete v
-	Change(vi *Node, r string) error // change v to vi
-	Find(shortURL string) (string, error)   // find v from db.
+	Add(v *Node) (shortURL string, err error) // add v to db
+	Delete(shortURL string)                   // delete v
+	Change(vi *Node, r string) error          // change v to vi
+	Find(shortURL string) (string, error)     // find v from db.
 }
 
 type MapDB struct {
@@ -20,16 +20,17 @@ func NewMapDB() *MapDB {
 		Value: make(map[string]string),
 	}
 }
-func (m *MapDB) Add(v *Node) (string,error) {
+func (m *MapDB) Add(v *Node) (string, error) {
 	if _, ok := m.Value[v.ShortValue]; ok {
-		return "",fmt.Errorf("this long URL is existed. ")
+		return "", fmt.Errorf("this long URL is existed. ")
 	}
 	m.Value[v.ShortValue] = v.LongValue
-	return v.ShortValue,nil
+	return v.ShortValue, nil
 }
 func (m *MapDB) Delete(shortURL string) {
 	delete(m.Value, shortURL)
 }
+
 // change the longurl's shorturl to positionShortURL.
 func (m *MapDB) Change(n *Node, positionShortURL string) error {
 	shortURL := n.ShortValue
@@ -42,6 +43,7 @@ func (m *MapDB) Change(n *Node, positionShortURL string) error {
 	}
 	return nil
 }
+
 // find the short url
 func (m *MapDB) Find(shortURL string) (string, error) {
 	if val, ok := m.Value[shortURL]; !ok {

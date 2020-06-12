@@ -20,7 +20,7 @@ type Node struct {
 func NewShort(db DB) *Node {
 	return &Node{
 		db: db,
-		bf:   bloom.NewBloom(),
+		bf: bloom.NewBloom(),
 	}
 }
 

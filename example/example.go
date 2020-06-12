@@ -24,7 +24,7 @@ func main() {
 		fmt.Println(shortURL)
 	}
 	//
-	longURL, err = s.ShortFind(path+shortURL)
+	longURL, err = s.ShortFind(path + shortURL)
 	// if http
 	//http.Redirect(nil,nil,longURL,302
 	//)
