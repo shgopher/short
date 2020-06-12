@@ -13,17 +13,18 @@ var (
 )
 
 func main() {
-	s := short.NewShort()
 	db := short.NewMapDB()
+	// add db engine to short.
+	s := short.NewShort(db)
 	//
-	shortURL, err := s.ShortAdd(longURL, db)
+	shortURL, err := s.ShortAdd(longURL)
 	if err != nil {
 		glog.Error(err)
 	} else {
 		fmt.Println(shortURL)
 	}
 	//
-	longURL, err = s.ShortFind(path+shortURL, db)
+	longURL, err = s.ShortFind(path+shortURL)
 	// if http
 	//http.Redirect(nil,nil,longURL,302
 	//)
@@ -33,7 +34,7 @@ func main() {
 		fmt.Println("longURL:", longURL)
 	}
 	//
-	shortURL, err = s.ShortFind("a", db)
+	shortURL, err = s.ShortFind("a")
 	if err != nil {
 		glog.Error(err)
 	} else {

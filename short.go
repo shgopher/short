@@ -10,39 +10,40 @@ import (
 )
 
 type Node struct {
-	lock       *sync.Mutex
+	db         DB
+	lock       sync.Mutex
 	bf         *bloom.BloomFilter
 	LongValue  string // long string
 	ShortValue string // short string
 }
 
-func NewShort() *Node {
+func NewShort(db DB) *Node {
 	return &Node{
-		lock: &sync.Mutex{},
+		db: db,
 		bf:   bloom.NewBloom(),
 	}
 }
 
 // short the long url to a small one in hash method.
-func (n *Node) ShortAdd(longURL string, db DB) (string, error) {
+func (n *Node) ShortAdd(longURL string) (string, error) {
 	n.lock.Lock()
 	defer n.lock.Unlock()
 	murmurStringValue := hash.MurmurHash(longURL)
 	n.LongValue = longURL
 	n.ShortValue = murmurStringValue
 	n.bf.Add([]byte(n.ShortValue))
-	return db.Add(n)
+	return n.db.Add(n)
 }
 
 // delete the shortURL,and it's long url
-func (n *Node) ShortDelete(shortURL string, db DB) {
+func (n *Node) ShortDelete(shortURL string) {
 	n.lock.Lock()
-	db.Delete(n.LongValue)
+	n.db.Delete(n.LongValue)
 	n.lock.Unlock()
 }
 
 // find the longurl's shortURL.
-func (n *Node) ShortFind(shortURL string, db DB) (string, error) {
+func (n *Node) ShortFind(shortURL string) (string, error) {
 	n.lock.Lock()
 	defer n.lock.Unlock()
 	_, short := filepath.Split(shortURL)
@@ -50,14 +51,14 @@ func (n *Node) ShortFind(shortURL string, db DB) (string, error) {
 	if !n.bf.IsExit([]byte(short)) {
 		return "", fmt.Errorf("bloom filter:no long url.")
 	}
-	return db.Find(short)
+	return n.db.Find(short)
 }
 
 // change a new short URL.
-func (n *Node) ShortChange(newShortURL string, db DB) error {
+func (n *Node) ShortChange(newShortURL string) error {
 	n.lock.Lock()
 	defer n.lock.Unlock()
-	return db.Change(n, newShortURL)
+	return n.db.Change(n, newShortURL)
 }
 
 // set shortURL to a QR CODE
