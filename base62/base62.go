@@ -19,7 +19,7 @@ func EncodeBase62(v int) string {
 	if v == 0 {
 		return "0"
 	}
-	result := make([]byte, 0, 62)
+	var result []byte
 	for v > 0 {
 		quotient := v / LENGTH
 		residue := v % LENGTH
