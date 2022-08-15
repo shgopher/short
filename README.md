@@ -1,7 +1,4 @@
 # short
-[![Goproxy.cn](https://goproxy.cn/stats/github.com/shgoppher/short/badges/download-count.svg)](https://goproxy.cn)
-
-Use murmur hash function.
 
 URL shortening service.
 
