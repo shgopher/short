@@ -61,9 +61,6 @@ func main() {
 ```
 
 ## HERE
-|items|description|
-|:---:|:---:|
-|aliyun vps|[aliyun vps](https://www.aliyun.com/minisite/goods?userCode=ol87kpmz)，China's largest cloud computing manufacturer, the world's top 5 cloud computing service providers|
-|VPS|[vps](https://app.cloudcone.com/?ref=2525) fast and cheap just 2-3.75$/mo|
-|WeChat public account 微信公众号|![p](https://raw.githubusercontent.com/googege/GOFamily/master/joinUsW.jpg)|
-|My bilibili b站|[b](https://space.bilibili.com/23170151)|
+微信公众号：科科人神
+
+关注我了解更多软件知识。
