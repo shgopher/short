@@ -2,11 +2,12 @@ package short
 
 import (
 	"fmt"
-	"github.com/googege/short/bloom"
-	"github.com/googege/short/hash"
-	qr "github.com/skip2/go-qrcode"
 	"path/filepath"
 	"sync"
+
+	"github.com/shgopher/short/bloom"
+	"github.com/shgopher/short/hash"
+	qr "github.com/skip2/go-qrcode"
 )
 
 type Node struct {

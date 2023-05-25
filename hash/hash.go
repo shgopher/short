@@ -1,7 +1,7 @@
 package hash
 
 import (
-	"github.com/googege/short/base62"
+	"github.com/shgopher/short/base62"
 	"github.com/spaolacci/murmur3"
 )
 

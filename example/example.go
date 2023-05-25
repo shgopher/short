@@ -1,10 +1,21 @@
+/*
+ * @Author: shgopher shgopher@gmail.com
+ * @Date: 2023-05-26 04:15:12
+ * @LastEditors: shgopher shgopher@gmail.com
+ * @LastEditTime: 2023-05-26 04:33:30
+ * @FilePath: /short/example/example.go
+ * @Description:
+ *
+ * Copyright (c) 2023 by shgopher, All Rights Reserved.
+ */
 package main
 
 import (
 	"fmt"
-	"github.com/golang/glog"
-	"github.com/googege/short"
 	"os"
+
+	"github.com/golang/glog"
+	"github.com/shgopher/short"
 )
 
 var (
