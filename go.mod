@@ -1,4 +1,4 @@
-module github.com/googege/short
+module github.com/shgopher/short
 
 go 1.14
 
